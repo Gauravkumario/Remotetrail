@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable static exports for Netlify
-  output: "export",
+  // output: "export",
 
   // Environment specific settings
   env: {
@@ -11,7 +11,7 @@ const nextConfig = {
 
   // Image optimization settings
   images: {
-    unoptimized: true, // Required for static exports
+    // unoptimized: true, // Not needed for dynamic deployment
   },
 };
 

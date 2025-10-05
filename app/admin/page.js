@@ -12,16 +12,19 @@ export default function AdminDashboard() {
   const [jobs, setJobs] = useState([]);
   const [editingJob, setEditingJob] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 10;
   const router = useRouter();
 
   useEffect(() => {
-    const isAuthenticated = sessionStorage.getItem("isAdminAuthenticated");
-    if (isAuthenticated !== "true") {
+    const isAuthenticated =
+      sessionStorage.getItem("isAdminAuthenticated") === "true";
+    if (!isAuthenticated) {
       router.push("/");
     } else {
       fetchJobs();
+      setIsCheckingAuth(false);
     }
   }, [router]);
 
@@ -118,11 +121,7 @@ export default function AdminDashboard() {
     setCurrentPage(pageNumber);
   };
 
-  if (loading && sessionStorage.getItem("isAdminAuthenticated") !== "true") {
-    return null; // Render nothing while redirecting
-  }
-
-  if (loading) {
+  if (isCheckingAuth) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#3b82f6]"></div>
