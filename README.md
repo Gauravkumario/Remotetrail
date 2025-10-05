@@ -2,6 +2,21 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Environment Setup
+
+1. Copy the environment variables template:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Update the `.env` file with your environment-specific values:
+   - `NEXT_PUBLIC_APP_ENV`: Set to 'development' for local development
+   - `NEXT_PUBLIC_SITE_URL`: Your site URL (http://localhost:3000 for local development)
+   - Add any other required environment variables
+
+### Development Server
+
 First, run the development server:
 
 ```bash
@@ -28,6 +43,21 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deployment on Netlify
+
+This project is configured for deployment on Netlify. Follow these steps:
+
+1. Push your code to a Git repository
+2. Connect your repository to Netlify
+3. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `out`
+4. Set up environment variables in Netlify:
+   - Go to Site settings > Build & deploy > Environment variables
+   - Add all variables from your `.env` file, updating values for production
+   - Set `NEXT_PUBLIC_APP_ENV` to 'production'
+   - Set `NEXT_PUBLIC_SITE_URL` to your Netlify domain (https://remotetrail.netlify.app)
 
 ## Deploy on Vercel
 
